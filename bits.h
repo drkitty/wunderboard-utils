@@ -4,11 +4,9 @@
 // uint8_t:
 #include <avr/io.h>
 
-typedef uint8_t byte;
-
 // mask: 1 = replace this bit
-char bitsReplace(byte base, byte newBits, byte mask);
+char bitsReplace(uint8_t base, uint8_t newBits, uint8_t mask);
 
-void bitsToArray(byte bits, uint8_t array[8]);
+void bitsToArray(uint8_t bits, uint8_t array[8]);
 
 #endif //BITS_H

@@ -1,11 +1,8 @@
 #include "screen.h"
 #include "bits.h"
 
-/*// uint8_t:
-#include <avr/io.h>*/
-/*#include <stdlib.h>*/
-
-void screenColBits(byte col, byte red, byte green, byte blue) {
+void screenColBits(uint8_t col, uint8_t red, uint8_t green, uint8_t blue)
+{
 	PORTE = bitsReplace(PORTE, col, 0b111);
 
 	SPDR = red;
@@ -19,13 +16,16 @@ void screenColBits(byte col, byte red, byte green, byte blue) {
 	PORTB = PORTB ^ (1<<7);
 }
 
-void clearScreen() {
+void clearScreen()
+{
 	for (uint8_t i=0; i <= 7; i++) {
 		screenColBits(i, 0x00, 0x00, 0x00);
 	};
 }
 
-void screenArray(const byte red[8], const byte green[8], const byte blue[8]) {
+void screenArray(const uint8_t red[8], const uint8_t green[8],
+		const uint8_t blue[8])
+{
 	for (uint8_t i=0; i <= 7; i++) {
 		screenColBits(i, red[i], green[i], blue[i]);
 		screenColBits(i, 0, 0, 0);
