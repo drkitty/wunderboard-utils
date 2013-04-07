@@ -81,20 +81,20 @@ uint8_t letter_F_cols[@] = {\
 };\
 letter_F.cols = letter_F_cols;
 
+*/
+
 #define INIT_LETTER_G() \
 struct character letter_G;\
-letter_G.colCount = @;\
-uint8_t letter_G_cols[@] = {\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000\
+letter_G.colCount = 6;\
+uint8_t letter_G_cols[6] = {\
+	0b01001110,\
+	0b11001111,\
+	0b11001011,\
+	0b11000011,\
+	0b11111111,\
+	0b01111110\
 };\
 letter_G.cols = letter_G_cols;
-
-*/
 
 #define INIT_LETTER_H() \
 struct character letter_H;\
@@ -109,20 +109,19 @@ uint8_t letter_H_cols[6] = {\
 };\
 letter_H.cols = letter_H_cols;
 
-/*
 
 #define INIT_LETTER_I() \
 struct character letter_I;\
-letter_I.colCount = @;\
-uint8_t letter_I_cols[@] = {\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000\
+letter_I.colCount = 4;\
+uint8_t letter_I_cols[4] = {\
+	0b11000011,\
+	0b11111111,\
+	0b11111111,\
+	0b11000011\
 };\
 letter_I.cols = letter_I_cols;
+
+/*
 
 #define INIT_LETTER_J() \
 struct character letter_J;\
@@ -202,18 +201,22 @@ uint8_t letter_O_cols[@] = {\
 };\
 letter_O.cols = letter_O_cols;
 
+*/
+
 #define INIT_LETTER_P() \
 struct character letter_P;\
-letter_P.colCount = @;\
-uint8_t letter_P_cols[@] = {\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000\
+letter_P.colCount = 6;\
+uint8_t letter_P_cols[6] = {\
+	0b01110000,\
+	0b11111000,\
+	0b11011000,\
+	0b11011000,\
+	0b11111111,\
+	0b11111111\
 };\
 letter_P.cols = letter_P_cols;
+
+/*
 
 #define INIT_LETTER_Q() \
 struct character letter_Q;\
@@ -293,18 +296,23 @@ uint8_t letter_V_cols[@] = {\
 };\
 letter_V.cols = letter_V_cols;
 
+*/
+
 #define INIT_LETTER_W() \
 struct character letter_W;\
-letter_W.colCount = @;\
-uint8_t letter_W_cols[@] = {\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000,\
-	0b00000000\
+letter_W.colCount = 7;\
+uint8_t letter_W_cols[7] = {\
+	0b11111110,\
+	0b11111111,\
+	0b00000011,\
+	0b00011110,\
+	0b00000011,\
+	0b11111111,\
+	0b11111110\
 };\
 letter_W.cols = letter_W_cols;
+
+/*
 
 #define INIT_LETTER_X() \
 struct character letter_X;\
@@ -499,7 +507,7 @@ letter_l.colCount = 3;\
 uint8_t letter_l_cols[3] = {\
 	0b00000011,\
 	0b11111111,\
-	0b11111100\
+	0b11111110\
 };\
 letter_l.cols = letter_l_cols;
 
