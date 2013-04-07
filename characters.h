@@ -1,6 +1,67 @@
 #ifndef CHARACTERS_H
 #define CHARACTERS_H
 
+struct character {
+	uint8_t* cols;
+	uint8_t colCount;
+};
+
+#define INIT_CAPITALS() \
+INIT_LETTER_A()\
+INIT_LETTER_B()\
+INIT_LETTER_C()\
+INIT_LETTER_D()\
+INIT_LETTER_E()\
+INIT_LETTER_F()\
+INIT_LETTER_G()\
+INIT_LETTER_H()\
+INIT_LETTER_I()\
+INIT_LETTER_J()\
+INIT_LETTER_K()\
+INIT_LETTER_L()\
+INIT_LETTER_M()\
+INIT_LETTER_N()\
+INIT_LETTER_O()\
+INIT_LETTER_P()\
+INIT_LETTER_Q()\
+INIT_LETTER_R()\
+INIT_LETTER_S()\
+INIT_LETTER_T()\
+INIT_LETTER_U()\
+INIT_LETTER_V()\
+INIT_LETTER_W()\
+INIT_LETTER_X()\
+INIT_LETTER_Y()\
+INIT_LETTER_Z()
+
+#define INIT_LOWERCASE()\
+INIT_LETTER_a()\
+INIT_LETTER_b()\
+INIT_LETTER_c()\
+INIT_LETTER_d()\
+INIT_LETTER_e()\
+INIT_LETTER_f()\
+INIT_LETTER_g()\
+INIT_LETTER_h()\
+INIT_LETTER_i()\
+INIT_LETTER_j()\
+INIT_LETTER_k()\
+INIT_LETTER_l()\
+INIT_LETTER_m()\
+INIT_LETTER_n()\
+INIT_LETTER_o()\
+INIT_LETTER_p()\
+INIT_LETTER_q()\
+INIT_LETTER_r()\
+INIT_LETTER_s()\
+INIT_LETTER_t()\
+INIT_LETTER_u()\
+INIT_LETTER_v()\
+INIT_LETTER_w()\
+INIT_LETTER_x()\
+INIT_LETTER_y()\
+INIT_LETTER_z()\
+
 #define INIT_LETTER_A() \
 struct character letter_A;\
 letter_A.colCount = 6;\
@@ -708,5 +769,18 @@ uint8_t exclamationPoint_cols[2] = {\
 	0b11111011\
 };\
 exclamationPoint.cols = exclamationPoint_cols;
+
+#define INIT_SPACE6X8() \
+struct character space6x8;\
+space6x8.colCount = 6;\
+uint8_t space6x8_cols[6] = {\
+	0b00000000,\
+	0b00000000,\
+	0b00000000,\
+	0b00000000,\
+	0b00000000,\
+	0b00000000\
+};\
+space6x8.cols = space6x8_cols;
 
 #endif // CHARACTERS_H
