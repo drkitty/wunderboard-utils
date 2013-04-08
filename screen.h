@@ -2,6 +2,7 @@
 #define SCREEN_H
 
 // uint8_t:
+#include <stdint.h>
 #include <avr/io.h>
 
 /* Light the red, green, and blue layers at the specified column. */

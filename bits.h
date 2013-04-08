@@ -2,7 +2,7 @@
 #define BITS_H
 
 // uint8_t:
-#include <avr/io.h>
+#include <stdint.h>
 
 inline uint8_t getBit(uint8_t byte, uint8_t place)
 {
