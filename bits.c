@@ -1,10 +1,5 @@
 #include "bits.h"
 
-uint8_t getBit(uint8_t byte, uint8_t place)
-{
-	return (byte & (1<<place)) ? 1 : 0;
-}
-
 uint8_t replaceBit(uint8_t base, uint8_t newBit, uint8_t place)
 {
 	if (newBit)
