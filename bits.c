@@ -1,6 +1,6 @@
 #include "bits.h"
 
-inline uint8_t getBit(uint8_t byte, uint8_t place)
+uint8_t getBit(uint8_t byte, uint8_t place)
 {
 	return (byte & (1<<place)) ? 1 : 0;
 }
