@@ -6,7 +6,7 @@
 #include <avr/io.h>
 
 /* Light the red, green, and blue layers at the specified column. */
-void screenColBits(uint8_t col, uint8_t red, uint8_t green, uint8_t blue);
+void screenCol(uint8_t col, uint8_t red, uint8_t green, uint8_t blue);
 
 void clearScreen(void);
 

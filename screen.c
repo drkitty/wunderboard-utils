@@ -1,7 +1,7 @@
 #include "screen.h"
 #include "bits.h"
 
-void screenColBits(uint8_t col, uint8_t red, uint8_t green, uint8_t blue)
+void screenCol(uint8_t col, uint8_t red, uint8_t green, uint8_t blue)
 {
 	PORTE = replaceBits_mask(PORTE, col, 0b111);
 
