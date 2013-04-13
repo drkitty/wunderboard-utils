@@ -10,9 +10,14 @@ void screenCol(uint8_t col, uint8_t red, uint8_t green, uint8_t blue);
 
 void clearScreen(void);
 
-/* Light the red, blue, and green layers (each element is a column), then clear
+/* Light the red, green, and blue layers (each element is a column), then clear
  * the screen. */
 void screenArray(const uint8_t red[8], const uint8_t green[8],
 		const uint8_t blue[8]);
+
+/* Light the red, green, and blue layers (each element is a brightness level),
+ * then clear the screen. */
+void screenArrayFullColor(uint8_t red[64], uint8_t green[64], uint8_t blue[64],
+		uint8_t* counter, uint8_t brightnessLevels);
 
 #endif // SCREEN_H
