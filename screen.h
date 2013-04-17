@@ -20,4 +20,8 @@ void screenArray(const uint8_t red[8], const uint8_t green[8],
 void screenArrayFullColor(uint8_t red[64], uint8_t green[64], uint8_t blue[64],
 		uint8_t* counter, uint8_t brightnessLevels);
 
+/* Same, but cli() before calling screenCol and sei() after*/
+void screenArrayFullColor_block(uint8_t red[64], uint8_t green[64],
+		uint8_t blue[64], uint8_t* counter, uint8_t brightnessLevels);
+
 #endif // SCREEN_H
