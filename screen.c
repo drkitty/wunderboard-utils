@@ -1,3 +1,5 @@
+#include <avr/interrupt.h>
+
 #include "screen.h"
 #include "bits.h"
 
@@ -58,8 +60,11 @@ void screenArrayFullColor(uint8_t red[64], uint8_t green[64], uint8_t blue[64],
 			if (blue[(7-row)*8 + (7-col)] > *counter)
 				colBits[2] |= 1<<row;
 		};
+
+		cli();
 		screenCol(col, colBits[0], colBits[1], colBits[2]);
 		screenCol(col, 0x00, 0x00, 0x00);
+		sei();
 	};
 
 	*counter = (*counter + 1) % (brightnessLevels - 1);
