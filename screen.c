@@ -5,7 +5,7 @@
 
 void screenCol(uint8_t col, uint8_t red, uint8_t green, uint8_t blue)
 {
-	PORTE = replaceBits_mask(PORTE, col, 0b111);
+	PORTE = col;
 
 	SPDR = red;
 	while ( !(SPSR & (1<<SPIF)) );
