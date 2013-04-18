@@ -15,6 +15,12 @@ void TC0_setCOM0A(uint8_t mode)
 	// COM0A1:0 = mode
 }
 
+void TC0_setCOM0B(uint8_t mode)
+{
+	TCCR0A = replaceBits_mask(TCCR0A, mode << 4, 0b00110000);
+	// COM0B1:0 = mode
+}
+
 // set Clock Select
 void TC0_setCS0(uint8_t mode)
 {
@@ -28,14 +34,35 @@ void TC0_setOCR0A(uint8_t x)
 	OCR0A = x;
 }
 
-void TC0_enableOCMInterrupts()
+void TC0_setOCR0B(uint8_t x)
+{
+	OCR0B = x;
+}
+
+// enable Output Compare Match A interrupt
+void TC0_enableOCI_A(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 1, 1);
 	// OCIE0A = 1
 }
 
-void TC0_disableOCMInterrupts()
+// enable Output Compare Match B interrupt
+void TC0_enableOCI_B(void)
+{
+	TIMSK0 = replaceBit(TIMSK0, 1, 2);
+	// OCIE0B = 1
+}
+
+// disable Output Compare Match A interrupt
+void TC0_disableOCI_A(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 0, 1);
 	// OCIE0A = 0
+}
+
+// disable Output Compare Match B interrupt
+void TC0_disableOCI_B(void)
+{
+	TIMSK0 = replaceBit(TIMSK0, 0, 2);
+	// OCIE0B = 0
 }
