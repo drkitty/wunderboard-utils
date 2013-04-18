@@ -3,20 +3,6 @@
 #include "screen.h"
 #include "bits.h"
 
-void screenCol(uint8_t col, uint8_t red, uint8_t green, uint8_t blue)
-{
-	PORTE = col;
-
-	SPDR = red;
-	while ( !(SPSR & (1<<SPIF)) );
-	SPDR = green;
-	while ( !(SPSR & (1<<SPIF)) );
-	SPDR = blue;
-	while ( !(SPSR & (1<<SPIF)) );
-
-	PORTB = PORTB | (1<<7);
-	PORTB = PORTB ^ (1<<7);
-}
 
 void clearScreen()
 {
