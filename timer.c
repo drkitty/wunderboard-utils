@@ -1,4 +1,4 @@
-#include "timerclock.h"
+#include "timer.h"
 
 // set Waveform Generation Mode
 void TC0_setWGM0(uint8_t mode)

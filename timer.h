@@ -1,9 +1,17 @@
-#ifndef TIMERCLOCK_H
-#define TIMERCLOCK_H
+#ifndef TIMER_H
+#define TIMER_H
 
 // uint8_t:
 #include <avr/io.h>
 #include "bits.h"
+
+enum CS0_prescale {
+	CS0_1    = 1,
+	CS0_8    = 2,
+	CS0_64   = 3,
+	CS0_256  = 4,
+	CS0_1024 = 5
+};
 
 // set Waveform Generation Mode
 void TC0_setWGM0(uint8_t mode);
@@ -31,4 +39,4 @@ void TC0_disableOCI_A(void);
 
 void TC0_disableOCI_B(void);
 
-#endif // TIMERCLOCK_H
+#endif // TIMER_H
