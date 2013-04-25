@@ -14,6 +14,8 @@ except:
 
 
 print("N   OCR0A   freq")
+print();
+
 def main():
 	for N in {1, 8, 256, 1024}: # prescaler
 		for OCR0A in range(0xFF):

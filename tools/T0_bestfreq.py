@@ -3,6 +3,8 @@
 from T0_COMPA_frequency import *
 
 print("N   OCR0A   freq")
+print();
+
 def main():
 	for N in [1, 8, 256, 1024]: # prescaler
 		minFreqError = 1
@@ -18,8 +20,6 @@ def main():
 			#print("N = {}, OCR0A = 0x{:X}".format(N, OCR0A))
 			#print("freq = {}".format(freq))
 		print("{}   0x{:X}   {}".format(N, bestOCR0A,bestFreq))
-		if N != 1024:
-			print()
 
 if __name__ == "__main__":
 	main()
