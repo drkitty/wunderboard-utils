@@ -79,7 +79,7 @@ for i in {65..90} {97..122}; do {
 	VARNAME=LETTER_${letter}
 	cat <<EOF
 #define INIT_${VARNAME}() \\
-static const uint8_t ${varname}_pixels[8*6] PROGMEM = {\\
+static const uint8_t ${varname}_pixels[] PROGMEM = {\\
 	0,0,0,0,0,0,\\
 	0,0,0,0,0,0,\\
 	0,0,0,0,0,0,\\
