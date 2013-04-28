@@ -8,7 +8,6 @@ void initializeFifo(struct fifo* myFifo)
 	myFifo->head = NULL;
 }
 
-// (insert before head)
 void queue(struct fifo* theFifo, uint8_t val)
 {
 	struct fifoItem* oldHead;
@@ -19,7 +18,15 @@ void queue(struct fifo* theFifo, uint8_t val)
 	theFifo->head->next = oldHead;
 }
 
-// (remove tail)
+void queueStr(struct fifo* theFifo, char str[])
+{
+	uint8_t index = 0;
+
+	do {
+		queue(theFifo, str[index]);
+	} while (str[++index] != '\0');
+}
+
 uint8_t dequeue(struct fifo* theFifo)
 {
 	uint8_t val;

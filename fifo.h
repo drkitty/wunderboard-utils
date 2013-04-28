@@ -14,11 +14,13 @@ struct fifo {
 
 void initializeFifo(struct fifo* myFifo);
 
-// (insert before head)
+// Insert uint8_t before head
 void queue(struct fifo* theFifo, uint8_t val);
 
+// Insert string as chars before head
+void queueStr(struct fifo* theFifo, char str[]);
 
-// (remove tail)
+// Remove tail
 uint8_t dequeue(struct fifo* theFifo);
 
 #endif // FIFO_H
