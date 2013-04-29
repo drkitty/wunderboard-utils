@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-from T0_COMPA_frequency import *
 from sys import argv
+
+def f_COMPA(N, OCR0A):
+	return (8000000/(N*(OCR0A+1)))
 
 def main():
 	try:
