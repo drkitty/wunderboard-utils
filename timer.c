@@ -37,7 +37,7 @@ void TC0_setCS0(uint8_t mode)
 
 void TC1_setCS1(uint8_t mode)
 {
-	TCCR1B = replaceBits_mask(TCCR1B, mode, 0b11);
+	TCCR1B = replaceBits_mask(TCCR1B, mode, 0b111);
 	// CS12:0 = mode
 }
 
