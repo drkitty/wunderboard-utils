@@ -8,6 +8,13 @@ void TC0_setWGM0(uint8_t mode)
 	// WGM02:0 = mode
 }
 
+void TC1_setWGM1(uint8_t mode)
+{
+	TCCR1B = replaceBits_mask(TCCR1B, mode << 1, 0b11000); // from 0b1100
+	TCCR1A = replaceBits_mask(TCCR1A, mode, 0b11);
+	// WGM13:0 = mode
+}
+
 // set Compare Match Output A Mode
 void TC0_setCOM0A(uint8_t mode)
 {
@@ -28,10 +35,21 @@ void TC0_setCS0(uint8_t mode)
 	// CS02:0 = mode
 }
 
+void TC1_setCS1(uint8_t mode)
+{
+	TCCR1B = replaceBits_mask(TCCR1B, mode, 0b11);
+	// CS12:0 = mode
+}
+
 // set Output Compare Register A
 void TC0_setOCR0A(uint8_t x)
 {
 	OCR0A = x;
+}
+
+void TC1_setOCR1A(uint16_t x)
+{
+	OCR1A = x;
 }
 
 void TC0_setOCR0B(uint8_t x)
@@ -46,6 +64,12 @@ void TC0_enableOCI_A(void)
 	// OCIE0A = 1
 }
 
+void TC1_enableOCI_A(void)
+{
+	TIMSK1 = replaceBit(TIMSK1, 1, 1);
+	// OCIE1A = 1
+}
+
 // enable Output Compare Match B interrupt
 void TC0_enableOCI_B(void)
 {
@@ -58,6 +82,12 @@ void TC0_disableOCI_A(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 0, 1);
 	// OCIE0A = 0
+}
+
+void TC1_disableOCI_A(void)
+{
+	TIMSK1 = replaceBit(TIMSK1, 0, 1);
+	// OCIE1A = 0
 }
 
 // disable Output Compare Match B interrupt
