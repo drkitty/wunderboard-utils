@@ -2,10 +2,10 @@
 
 from T0_COMPA_frequency import *
 
-print("N   OCR0A   freq")
-print();
-
 def main():
+	print("N   OCR0A   freq")
+	print()
+
 	for N in [1, 8, 256, 1024]: # prescaler
 		minFreqError = 1
 		bestFreq = int()
