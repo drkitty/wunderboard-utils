@@ -20,6 +20,16 @@ void screenArray(const uint8_t red[8], const uint8_t green[8],
 	};
 }
 
+void screenArrayOneCol(const uint8_t red[8], const uint8_t green[8],
+		const uint8_t blue[8], uint8_t* const colCounter)
+{
+	screenCol(*colCounter, 0x00, 0x00, 0x00);
+	if (++*colCounter == 8)
+		*colCounter = 0;
+	screenCol(*colCounter, red[*colCounter], green[*colCounter],
+			blue[*colCounter]);
+}
+
 void screenArrayFullColor(uint8_t red[64], uint8_t green[64], uint8_t blue[64],
 		uint8_t* counter, uint8_t brightnessLevels)
 {
