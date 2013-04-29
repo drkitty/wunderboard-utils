@@ -16,11 +16,11 @@ def main():
 		exit()
 
 
-	print("N   OCR0A   freq")
+	print("N   OCRnA   freq")
 	print()
 
 	for N in [1, 8, 64, 256, 1024]: # prescaler
-		for OCR0A in range(0x100):
+		for OCR0A in range(0x10000):
 			freq = f_COMPA(N, OCR0A) # frequency of COMPA interrupt
 			freqError = abs(freq - int(freq))
 			if freqError < maxFreqError:
