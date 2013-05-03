@@ -3,6 +3,7 @@
 
 // uint8_t:
 #include <avr/io.h>
+#include "types.h"
 #include "bits.h"
 
 enum CS_prescale {
@@ -43,5 +44,8 @@ void TC0_disableOCI_A(void);
 void TC1_disableOCI_A(void);
 
 void TC0_disableOCI_B(void);
+
+BOOL TC1_getOCF1A(void);
+void TC1_resetOCF1A(void);
 
 #endif // TIMER_H

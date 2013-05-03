@@ -1,6 +1,5 @@
 #include "timer.h"
 
-// set Waveform Generation Mode
 void TC0_setWGM0(uint8_t mode)
 {
 	TCCR0B = replaceBit(TCCR0B, getBit(mode,2), 3);
@@ -15,7 +14,6 @@ void TC1_setWGM1(uint8_t mode)
 	// WGM13:0 = mode
 }
 
-// set Compare Match Output A Mode
 void TC0_setCOM0A(uint8_t mode)
 {
 	TCCR0A = replaceBits_mask(TCCR0A, mode << 6, 0b11000000);
@@ -28,7 +26,6 @@ void TC0_setCOM0B(uint8_t mode)
 	// COM0B1:0 = mode
 }
 
-// set Clock Select
 void TC0_setCS0(uint8_t mode)
 {
 	TCCR0B = replaceBits_mask(TCCR0B, mode, 0b111);
@@ -41,7 +38,6 @@ void TC1_setCS1(uint8_t mode)
 	// CS12:0 = mode
 }
 
-// set Output Compare Register A
 void TC0_setOCR0A(uint8_t x)
 {
 	OCR0A = x;
@@ -57,7 +53,6 @@ void TC0_setOCR0B(uint8_t x)
 	OCR0B = x;
 }
 
-// enable Output Compare Match A interrupt
 void TC0_enableOCI_A(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 1, 1);
@@ -70,14 +65,12 @@ void TC1_enableOCI_A(void)
 	// OCIE1A = 1
 }
 
-// enable Output Compare Match B interrupt
 void TC0_enableOCI_B(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 1, 2);
 	// OCIE0B = 1
 }
 
-// disable Output Compare Match A interrupt
 void TC0_disableOCI_A(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 0, 1);
@@ -90,9 +83,19 @@ void TC1_disableOCI_A(void)
 	// OCIE1A = 0
 }
 
-// disable Output Compare Match B interrupt
 void TC0_disableOCI_B(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 0, 2);
 	// OCIE0B = 0
+}
+
+BOOL TC1_getOCF1A(void)
+{
+	return TIFR1 & (1<<OCF1A);
+}
+
+void TC1_resetOCF1A(void)
+{
+	TIFR1 |= 1<<OCF1A;
+	// Don't ask.
 }
