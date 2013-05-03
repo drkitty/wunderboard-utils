@@ -1,13 +1,5 @@
 #include "bits.h"
 
-uint8_t replaceBit(uint8_t base, uint8_t newBit, uint8_t place)
-{
-	if (newBit)
-		return base | (1 << place);
-	else
-		return base & (0xFF ^ (1 << place));
-}
-
 uint8_t replaceBits_mask(uint8_t base, uint8_t newBits, uint8_t mask)
 {
 	return base ^ ((base ^ newBits) & mask);
