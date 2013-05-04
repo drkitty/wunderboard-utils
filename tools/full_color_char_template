@@ -91,8 +91,8 @@ static const uint8_t ${varname}_pixels[] PROGMEM = {\\
 };
 
 #define LOAD_${VARNAME}() \\
-charTable.pixels[0x${hex}] = ${varname}_pixels;\\
-charTable.width[0x${hex}] = 6;
+charTable.pixels['${letter}'] = ${varname}_pixels;\\
+charTable.width['${letter}'] = 6;
 
 EOF
 }; done
