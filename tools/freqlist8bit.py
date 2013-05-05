@@ -13,7 +13,7 @@ def main():
 		print()
 		print("usage:")
 		print("\tfreqlist8bit.py maxFrequencyError")
-		exit()
+		exit(1)
 
 
 	print("N   OCRnA   freq")

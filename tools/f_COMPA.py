@@ -14,7 +14,7 @@ def main():
 		print()
 		print("usage:")
 		print("\tf_COMPA.py N OCRnA")
-		exit()
+		exit(1)
 
 	print(f_COMPA(N, OCRnA))
 
