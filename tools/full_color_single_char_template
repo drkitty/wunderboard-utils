@@ -1,11 +1,13 @@
 #!/bin/bash
 
 i=$1
+prefix=$2
+PREFIX=$3
 
 printf -v hex '%x' "$i"
 printf -v letter "\\x$hex"
-varname=xxxx
-VARNAME=XXXX
+varname=${prefix}_xxxx
+VARNAME=${PREFIX}_XXXX
 cat <<EOF
 #define INIT_${VARNAME}() \\
 static const uint8_t ${varname}_pixels[] PROGMEM = {\\
