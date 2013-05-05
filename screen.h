@@ -23,23 +23,17 @@ inline void screenCol(uint8_t col, uint8_t red, uint8_t green, uint8_t blue)
 
 void clearScreen(void);
 
-/* Light the red, green, and blue layers (each element is a column), then clear
- * the screen. */
+/* Erase the previous column and paint the current one, using the red, green,
+ * and blue buffers. Each buffer element is a column. Bit 7 of element 7 is
+ * the upper-left pixel. */
 void screenArray(const uint8_t red[8], const uint8_t green[8],
 		const uint8_t blue[8]);
 
-/* Use this like screenArray(), except pass it a uint8_t* const colCounter that
- * keeps track of which column we're on. */
-void screenArrayOneCol(const uint8_t red[8], const uint8_t green[8],
-		const uint8_t blue[8], uint8_t* const colCounter);
-
-/* Light the red, green, and blue layers (each element is a brightness level),
- * then clear the screen. */
+/* Erase the previous column and paint the current one, using the red, green,
+ * and blue buffers. Each buffer element is a pixel's brightness level from 0
+ * (off) to brightnessLevels - 1. Buffers are row-major; element 0 is the
+ * upper-left pixel. */
 void screenArrayFullColor(uint8_t red[64], uint8_t green[64], uint8_t blue[64],
-		uint8_t* counter, uint8_t brightnessLevels);
-
-/* Same, but cli() before calling screenCol and sei() after*/
-void screenArrayFullColor_block(uint8_t red[64], uint8_t green[64],
-		uint8_t blue[64], uint8_t* counter, uint8_t brightnessLevels);
+		uint8_t brightnessLevels);
 
 #endif // SCREEN_H
