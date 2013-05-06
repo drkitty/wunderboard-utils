@@ -160,27 +160,29 @@ LOAD_NUMBER_9();
 INIT_SYMBOL_SPACE();\
 INIT_SYMBOL_EXCLAMATION_POINT();\
 INIT_SYMBOL_PERIOD();\
+INIT_SYMBOL_COLON();
 
 #define LOAD_SYMBOLS() \
 LOAD_SYMBOL_SPACE();\
 LOAD_SYMBOL_EXCLAMATION_POINT();\
 LOAD_SYMBOL_PERIOD();\
+LOAD_SYMBOL_COLON();
 
 #define INIT_SYMBOL_SPACE() \
 static const uint8_t symbol_space_pixels[] PROGMEM = {\
-	0,0,0,0,\
-	0,0,0,0,\
-	0,0,0,0,\
-	0,0,0,0,\
-	0,0,0,0,\
-	0,0,0,0,\
-	0,0,0,0,\
-	0,0,0,0\
+	0,0,0,\
+	0,0,0,\
+	0,0,0,\
+	0,0,0,\
+	0,0,0,\
+	0,0,0,\
+	0,0,0,\
+	0,0,0\
 };
 
 #define LOAD_SYMBOL_SPACE() \
 charTable.pixels[' '] = symbol_space_pixels;\
-charTable.width[' '] = 4;
+charTable.width[' '] = 3;
 
 #define INIT_SYMBOL_EXCLAMATION_POINT() \
 static const uint8_t symbol_exclamation_point_pixels[] PROGMEM = {\
@@ -373,6 +375,22 @@ static const uint8_t number_9_pixels[] PROGMEM = {\
 #define LOAD_NUMBER_9() \
 charTable.pixels['9'] = number_9_pixels;\
 charTable.width['9'] = 6;
+
+#define INIT_SYMBOL_COLON() \
+static const uint8_t symbol_colon_pixels[] PROGMEM = {\
+	0,0,\
+	1,1,\
+	1,1,\
+	0,0,\
+	0,0,\
+	1,1,\
+	1,1,\
+	0,0\
+};
+
+#define LOAD_SYMBOL_COLON() \
+charTable.pixels[':'] = symbol_colon_pixels;\
+charTable.width[':'] = 2;
 
 #define INIT_LETTER_A() \
 static const uint8_t letter_A_pixels[] PROGMEM = {\
