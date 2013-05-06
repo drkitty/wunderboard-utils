@@ -1,21 +1,24 @@
 #include "charscroll.h"
 
+/*** static ***/
+static uint8_t space = SPACE_WIDTH;
+static uint8_t spaceMode = 1;
+static uint8_t charCol = 0;
+static uint8_t charTableIndex;
+static BOOL screenBlank = FALSE;
+static uint8_t blankCols = 0;
+
+
+
 uint8_t scroll(struct fifo* charFifo, struct charTable_t charTable,
 		uint8_t red[], uint8_t green[], uint8_t blue[], uint8_t multR,
 		uint8_t multG, uint8_t multB)
 {
-	/*** static ***/
-	static uint8_t space = SPACE_WIDTH;
-	static uint8_t spaceMode = 1;
-	static uint8_t charCol = 0;
-	static uint8_t charTableIndex;
-	static BOOL screenBlank = FALSE;
-	static uint8_t blankCols = 0;
-
 	/*** temporary ***/
 	static uint8_t row;
 	static const uint8_t* pixelAddr;
 	static uint8_t pixel;
+
 
 	if (spaceMode) { // we're in space (mode)
 		if (space == SPACE_WIDTH) {
@@ -76,4 +79,12 @@ uint8_t scroll(struct fifo* charFifo, struct charTable_t charTable,
 		charCol++;
 
 	return (screenBlank);
+}
+
+
+void scrollReset(void)
+{
+	spaceMode = 1;
+	space = SPACE_WIDTH - 1; // one more space
+	screenBlank = FALSE;
 }
