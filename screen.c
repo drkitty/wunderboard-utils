@@ -38,7 +38,7 @@ void screenArrayFullColor(uint8_t red[64], uint8_t green[64], uint8_t blue[64],
 
 	if (++col == 8) {
 		col = 0;
-		if (++brightCounter == brightnessLevels)
+		if (++brightCounter == brightnessLevels - 1)
 			brightCounter = 0;
 	};
 
