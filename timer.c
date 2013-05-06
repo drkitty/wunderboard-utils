@@ -14,6 +14,13 @@ void TC1_setWGM1(uint8_t mode)
 	// WGM13:0 = mode
 }
 
+void TC3_setWGM3(uint8_t mode)
+{
+	TCCR3B = replaceBits_mask(TCCR3B, mode << 1, 0b11000); // from 0b1100
+	TCCR3A = replaceBits_mask(TCCR3A, mode, 0b11);
+	// WGM33:0 = mode
+}
+
 void TC0_setCOM0A(uint8_t mode)
 {
 	TCCR0A = replaceBits_mask(TCCR0A, mode << 6, 0b11000000);
@@ -38,9 +45,20 @@ void TC1_setCS1(uint8_t mode)
 	// CS12:0 = mode
 }
 
+void TC3_setCS3(uint8_t mode)
+{
+	TCCR3B = replaceBits_mask(TCCR3B, mode, 0b111);
+	// CS32:0 = mode
+}
+
 void TC0_setOCR0A(uint8_t x)
 {
 	OCR0A = x;
+}
+
+void TC3_setOCR3A(uint16_t x)
+{
+	OCR3A = x;
 }
 
 void TC1_setOCR1A(uint16_t x)
@@ -65,6 +83,12 @@ void TC1_enableOCI_A(void)
 	// OCIE1A = 1
 }
 
+void TC3_enableOCI_A(void)
+{
+	TIMSK3 = replaceBit(TIMSK3, 1, 1);
+	// OCIE3A = 1
+}
+
 void TC0_enableOCI_B(void)
 {
 	TIMSK0 = replaceBit(TIMSK0, 1, 2);
@@ -81,6 +105,12 @@ void TC1_disableOCI_A(void)
 {
 	TIMSK1 = replaceBit(TIMSK1, 0, 1);
 	// OCIE1A = 0
+}
+
+void TC3_disableOCI_A(void)
+{
+	TIMSK3 = replaceBit(TIMSK3, 0, 1);
+	// OCIE3A = 0
 }
 
 void TC0_disableOCI_B(void)
