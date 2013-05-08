@@ -6,12 +6,33 @@
 #include "types.h"
 #include "bits.h"
 
-enum CS_prescale {
-	CS_1    = 1,
-	CS_8    = 2,
-	CS_64   = 3,
-	CS_256  = 4,
-	CS_1024 = 5
+enum WGM0_t {
+	WGM0_NORMAL = 0,
+	WGM0_CTC    = 2
+};
+
+enum WGM1_t {
+	WGM1_NORMAL = 0,
+	WGM1_CTC    = 4
+};
+
+enum WGM2_t {
+	WGM2_NORMAL = 0,
+	WGM2_CTC    = 2
+};
+
+enum WGM3_t {
+	WGM3_NORMAL = 0,
+	WGM3_CTC    = 4
+};
+
+enum CSn_t {
+	CSn_NOCLOCK = 0,
+	CSn_1       = 1,
+	CSn_8       = 2,
+	CSn_64      = 3,
+	CSn_256     = 4,
+	CSn_1024    = 5
 };
 
 // set Waveform Generation Mode
