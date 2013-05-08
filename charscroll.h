@@ -24,8 +24,10 @@ inline void shiftPixelsLeft(uint8_t red[], uint8_t green[], uint8_t blue[])
 	};
 }
 
-uint8_t scroll(struct fifo* charFifo, struct charTable_t charTable,
-		uint8_t red[], uint8_t green[], uint8_t blue[], uint8_t multR,
-		uint8_t multG, uint8_t multB);
+uint8_t scroll(struct fifo* charFifo, struct charTable_t* charTable,
+		uint8_t red[64], uint8_t green[64], uint8_t blue[64],
+		const uint8_t mult[3]);
+
+void scrollReset(void);
 
 #endif // CHARSCROLL_H

@@ -10,9 +10,9 @@ static uint8_t blankCols = 0;
 
 
 
-uint8_t scroll(struct fifo* charFifo, struct charTable_t charTable,
-		uint8_t red[], uint8_t green[], uint8_t blue[], uint8_t multR,
-		uint8_t multG, uint8_t multB)
+uint8_t scroll(struct fifo* charFifo, struct charTable_t* charTable,
+		uint8_t red[64], uint8_t green[64], uint8_t blue[64],
+		const uint8_t mult[3])
 {
 	/*** temporary ***/
 	static uint8_t row;
@@ -45,7 +45,7 @@ uint8_t scroll(struct fifo* charFifo, struct charTable_t charTable,
 	};
 
 	// end of char
-	if (!spaceMode && charCol == charTable.width[charTableIndex]) {
+	if (!spaceMode && charCol == charTable->width[charTableIndex]) {
 		//PORTC = 2;
 		spaceMode = 1;
 		space = 0;
@@ -63,13 +63,13 @@ uint8_t scroll(struct fifo* charFifo, struct charTable_t charTable,
 		};
 	} else {
 		for (row = 0; row <= 7; row++) {
-			pixelAddr = &charTable.pixels[charTableIndex]
-				[charTable.width[charTableIndex]*row
+			pixelAddr = &charTable->pixels[charTableIndex]
+				[charTable->width[charTableIndex]*row
 				+ charCol];
 			pixel = pgm_read_byte(pixelAddr);
-			red[8*row + 7] = pixel * multR;
-			green[8*row + 7] = pixel * multG;
-			blue[8*row + 7] = pixel * multB;
+			red[8*row + 7] = pixel * mult[0];
+			green[8*row + 7] = pixel * mult[1];
+			blue[8*row + 7] = pixel * mult[2];
 		};
 	};
 
