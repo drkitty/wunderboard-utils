@@ -3,7 +3,7 @@
 from sys import argv
 from math import floor
 
-noteNames = [ "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" ]
+noteNames = [ "A", "As", "B", "C", "Cs", "D", "Ds", "E", "F", "Fs", "G", "Gs" ]
 
 def f_COMPA(N, OCRnA):
 	return (8000000/(2*N*(OCRnA+1)))
@@ -46,6 +46,8 @@ def main():
 		print("\tnotelist.py prescaleFactor firstNote lastNote")
 		exit(1)
 
+	print("enum {")
+
 	for note in range(first, last + 1): # because Python hates happiness
 		#note name = whatever
 		target = noteToFreq(note)
@@ -54,8 +56,14 @@ def main():
 		#print("{}  =  {}   0x{:X}   {}\t\terr = {}".format(note, bestValues[0],
 			#bestValues[1], bestValues[2], bestValues[3]))
 		if bestValues[1] != -1:
-			print("\tqueue16(noteFifo, 0x{:X}); // {}  +/- {:.2}".format(
-				bestValues[1], noteStr(note), bestValues[3]))
+			if note == last:
+				commaMaybe = ""
+			else:
+				commaMaybe = ","
+			line = "\t{:<3} = 0x{:X}{:<1}  //  +/- {:.2}".format( \
+					noteStr(note), bestValues[1], commaMaybe, bestValues[3])
+			print(line)
+	print("};")
 
 
 if __name__ == "__main__":
