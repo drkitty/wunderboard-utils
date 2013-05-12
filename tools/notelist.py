@@ -63,7 +63,7 @@ def main():
 
 			bestOCRnA = "0x{:X}".format(bestValues[1])
 
-			line = "\t{:<3} = {:>6}{:<1}  //  {:<7.6}  +/- {:.2}".format( \
+			line = "\t{:<3} = {:>6}{:<1}  //  {:<7.6} Hz  +/- {:.2}".format( \
 					noteStr(note), bestOCRnA, commaMaybe, target,
 					bestValues[3])
 			print(line)
