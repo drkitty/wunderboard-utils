@@ -1,9 +1,8 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-// uint8_t:
-#include <avr/io.h>
-#include "types.h"
+#include <avr/io.h> // uint8_t
+#include "types.h" // BOOL, TRUE, FALSE
 #include "bits.h"
 
 enum WGM0_t {
@@ -12,8 +11,13 @@ enum WGM0_t {
 };
 
 enum WGM1_t {
-	WGM1_NORMAL = 0,
-	WGM1_CTC    = 4
+	WGM1_NORMAL            =  0,
+	WGM1_FASTPWM_TOP_00FF  =  1,
+	WGM1_FASTPWM_TOP_01FF  =  2,
+	WGM1_FASTPWM_TOP_03FF  =  3,
+	WGM1_CTC               =  4,
+	WGM1_FASTPWM_TOP_ICR1  = 14,
+	WGM1_FASTPWM_TOP_OCR1A = 15
 };
 
 enum WGM2_t {
@@ -22,17 +26,36 @@ enum WGM2_t {
 };
 
 enum WGM3_t {
-	WGM3_NORMAL = 0,
-	WGM3_CTC    = 4
+	WGM3_NORMAL            =  0,
+	WGM3_FASTPWM_TOP_00FF  =  1,
+	WGM3_FASTPWM_TOP_01FF  =  2,
+	WGM3_FASTPWM_TOP_03FF  =  3,
+	WGM3_CTC               =  4,
+	WGM3_FASTPWM_TOP_ICR3  = 14,
+	WGM3_FASTPWM_TOP_OCR3A = 15
 };
 
-enum CSn_t {
-	CSn_NOCLOCK = 0,
-	CSn_1       = 1,
-	CSn_8       = 2,
-	CSn_64      = 3,
-	CSn_256     = 4,
-	CSn_1024    = 5
+enum COM_CTC_t { // OCnx mode
+	COM_CTC_NORMAL = 0,
+	COM_CTC_TOGGLE = 1, // toggle at OCRnx
+	COM_CTC_CLR    = 2, // clear at OCRnx
+	COM_CTC_SET    = 3  // set at OCRnx
+};
+
+enum COM_FASTPWM_t { // OCnx mode
+	COM_FASTPWM_NORMAL            = 0,
+	COM_FASTPWM_TOGGLE_OCRnx      = 1, // toggle at OCRnx
+	COM_FASTPWM_SET_TOP_CLR_OCRnx = 2, // set at TOP, clear at OCRnx
+	COM_FASTPWM_CLR_TOP_SET_OCRnx = 3  // clear at TOP, set at OCRnx
+};
+
+enum CS_t {
+	CS_NOCLOCK = 0,
+	CS_1       = 1,
+	CS_8       = 2,
+	CS_64      = 3,
+	CS_256     = 4,
+	CS_1024    = 5
 };
 
 // set Waveform Generation Mode
@@ -40,20 +63,16 @@ void TC0_setWGM0(uint8_t mode);
 void TC1_setWGM1(uint8_t mode);
 void TC3_setWGM3(uint8_t mode);
 
-// set Compare Match Output A Mode
+// set Compare Match Output Mode
 void TC0_setCOM0A(uint8_t mode);
-
 void TC0_setCOM0B(uint8_t mode);
+
+void TC1_setCOM1A(uint8_t mode);
 
 // set Clock Select
 void TC0_setCS0(uint8_t mode);
 void TC1_setCS1(uint8_t mode);
 void TC3_setCS3(uint8_t mode);
-
-// set Output Compare Register A
-void TC0_setOCR0A(uint8_t x);
-void TC1_setOCR1A(uint16_t x);
-void TC3_setOCR3A(uint16_t x);
 
 // set Output Compare Register B
 void TC0_setOCR0B(uint8_t x);

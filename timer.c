@@ -33,6 +33,12 @@ void TC0_setCOM0B(uint8_t mode)
 	// COM0B1:0 = mode
 }
 
+void TC1_setCOM1A(uint8_t mode)
+{
+	TCCR1A = replaceBits_mask(TCCR1A, mode << 6, 0b11000000);
+	// COM1A1:0 = mode
+}
+
 void TC0_setCS0(uint8_t mode)
 {
 	TCCR0B = replaceBits_mask(TCCR0B, mode, 0b111);
@@ -49,26 +55,6 @@ void TC3_setCS3(uint8_t mode)
 {
 	TCCR3B = replaceBits_mask(TCCR3B, mode, 0b111);
 	// CS32:0 = mode
-}
-
-void TC0_setOCR0A(uint8_t x)
-{
-	OCR0A = x;
-}
-
-void TC3_setOCR3A(uint16_t x)
-{
-	OCR3A = x;
-}
-
-void TC1_setOCR1A(uint16_t x)
-{
-	OCR1A = x;
-}
-
-void TC0_setOCR0B(uint8_t x)
-{
-	OCR0B = x;
 }
 
 void TC0_enableOCI_A(void)
