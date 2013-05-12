@@ -6,7 +6,7 @@ from math import floor
 noteNames = [ "A", "As", "B", "C", "Cs", "D", "Ds", "E", "F", "Fs", "G", "Gs" ]
 
 def f_COMPA(N, OCRnA):
-	return (8000000/(2*N*(OCRnA+1)))
+	return (8000000/(N*(OCRnA+1)))
 
 def noteToFreq(note):
 	return pow(2,(note-49)/12)*440
@@ -46,22 +46,26 @@ def main():
 		print("\tnotelist.py prescaleFactor firstNote lastNote")
 		exit(1)
 
-	print("enum {")
+	print("enum note_t {")
 
 	for note in range(first, last + 1): # because Python hates happiness
-		#note name = whatever
 		target = noteToFreq(note)
 		bestValues = freqToOCR1A(N, target)
 
 		#print("{}  =  {}   0x{:X}   {}\t\terr = {}".format(note, bestValues[0],
 			#bestValues[1], bestValues[2], bestValues[3]))
+
 		if bestValues[1] != -1:
 			if note == last:
 				commaMaybe = ""
 			else:
 				commaMaybe = ","
-			line = "\t{:<3} = 0x{:X}{:<1}  //  +/- {:.2}".format( \
-					noteStr(note), bestValues[1], commaMaybe, bestValues[3])
+
+			bestOCRnA = "0x{:X}".format(bestValues[1])
+
+			line = "\t{:<3} = {:>6}{:<1}  //  {:<7.6}  +/- {:.2}".format( \
+					noteStr(note), bestOCRnA, commaMaybe, target,
+					bestValues[3])
 			print(line)
 	print("};")
 
