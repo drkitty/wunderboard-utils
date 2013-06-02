@@ -6,6 +6,7 @@
 void initializeFifo(struct fifo* myFifo)
 {
 	myFifo->head = NULL;
+	myFifo->tail = NULL;
 }
 
 void queue(struct fifo* theFifo, uint8_t val)
@@ -14,8 +15,16 @@ void queue(struct fifo* theFifo, uint8_t val)
 
 	oldHead = theFifo->head;
 	theFifo->head = (struct fifoItem*)malloc(sizeof(struct fifoItem));
+
 	theFifo->head->val = val;
+	theFifo->head->prev = NULL;
 	theFifo->head->next = oldHead;
+
+
+	if (theFifo->head->next == NULL) // only 1 element
+		theFifo->tail = theFifo->head;
+	else
+		theFifo->head->next->prev = theFifo->head;
 }
 
 void queueStr(struct fifo* theFifo, char str[])
@@ -31,18 +40,17 @@ uint8_t dequeue(struct fifo* theFifo)
 {
 	uint8_t val;
 
-	if (theFifo->head->next == NULL) { // only 1 element
-		val = theFifo->head->val;
-		free (theFifo->head);
+	if (theFifo->tail->prev == NULL) { // only 1 element
+		val = theFifo->tail->val;
+		free (theFifo->tail);
 		theFifo->head = NULL;
+		theFifo->tail = NULL;
 	} else { // at least 2 elements
-		struct fifoItem* beforeTail = theFifo->head;
-		while (beforeTail->next->next != NULL) {
-			beforeTail = beforeTail->next;
-		};
-		val = beforeTail->next->val;
-		free (beforeTail->next);
-		beforeTail->next = NULL;
+		val = theFifo->tail->val;
+		struct fifoItem* newTail = theFifo->tail->prev;
+		free (theFifo->tail);
+		theFifo->tail = newTail;
+		newTail->next = NULL;
 	};
 
 	return val;

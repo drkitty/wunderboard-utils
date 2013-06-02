@@ -5,11 +5,13 @@
 
 struct fifoItem {
 	uint8_t val;
+	struct fifoItem* prev;
 	struct fifoItem* next;
 };
 
 struct fifo {
 	struct fifoItem* head;
+	struct fifoItem* tail;
 };
 
 void initializeFifo(struct fifo* myFifo);
