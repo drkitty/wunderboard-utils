@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <avr/pgmspace.h>
+#include <stdbool.h>
 
 #include "types.h"
 #include "fifo.h"
@@ -24,9 +25,8 @@ inline void shiftPixelsLeft(uint8_t red[], uint8_t green[], uint8_t blue[])
 	};
 }
 
-uint8_t scroll(struct fifo* charFifo, struct charTable_t* charTable,
-		uint8_t red[64], uint8_t green[64], uint8_t blue[64],
-		const uint8_t mult[3]);
+bool scroll(struct fifo* charFifo, struct charTable_t* charTable,
+		uint8_t red[64], uint8_t green[64], uint8_t blue[64]);
 
 void scrollReset(void);
 
